@@ -2,10 +2,22 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.intro {
+  margin-top: 50px;
 }
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  margin: 20px 0;
+  text-decoration: none;
+  color: gray;
+}
+
+:hover
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
