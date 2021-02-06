@@ -1,4 +1,5 @@
 import './App.css';
+import Inline from './Inline';
 import {Link, Route, Switch } from "react-router-dom"
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       </div>
 
       <Switch>
-        <Route exact path='/inline'><h1>inline</h1></Route>
+        <Route exact path='/inline'><Inline/></Route>
         <Route exact path='/css-in-js'><h1>css-in-js</h1></Route>
         <Route exact path='/css-stylesheets'><h1>css-stylesheets</h1></Route>
         <Route exact path='/css-modules'><h1>css-modules</h1></Route>
