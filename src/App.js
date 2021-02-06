@@ -1,6 +1,22 @@
 import './App.css';
 import Inline from './Inline';
-import {Link, Route, Switch } from "react-router-dom"
+import { Link, Route, Switch } from "react-router-dom";
+
+const theme = {
+  header: {
+    header: {
+      fg: '#ff598a'
+    },
+    input: {
+      color: '#fff',
+      background: '#070222',
+      textAlign: 'center'
+    },
+    inputFocus: {
+      outline: '2px solid #5e9fff'
+    }
+  }
+}
 
 function App() {
   return (
@@ -17,7 +33,9 @@ function App() {
       </div>
 
       <Switch>
-        <Route exact path='/inline'><Inline/></Route>
+        <Route exact path='/inline'>
+          <Inline />
+        </Route>
         <Route exact path='/css-in-js'><h1>css-in-js</h1></Route>
         <Route exact path='/css-stylesheets'><h1>css-stylesheets</h1></Route>
         <Route exact path='/css-modules'><h1>css-modules</h1></Route>
