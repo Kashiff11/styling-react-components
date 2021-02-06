@@ -1,5 +1,6 @@
 import './App.css';
 import Inline from './Inline';
+import CssInJS from './CssInJS';
 import { Link, Route, Switch } from "react-router-dom";
 
 const theme = {
@@ -36,7 +37,7 @@ function App() {
         <Route exact path='/inline'>
           <Inline />
         </Route>
-        <Route exact path='/css-in-js'><h1>css-in-js</h1></Route>
+        <Route exact path='/css-in-js'><h1><CssInJS/></h1></Route>
         <Route exact path='/css-stylesheets'><h1>css-stylesheets</h1></Route>
         <Route exact path='/css-modules'><h1>css-modules</h1></Route>
       </Switch>

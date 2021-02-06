@@ -18,7 +18,7 @@ function Newsletter(props) {
         ))}
       </div>
       <header style={styles.header()}>
-        <h2 style={styles.headerH2()}>Get the newsletter</h2>
+        <h2 style={styles.headerH2()}>Inline Styling: Get the newsletter</h2>
       </header>
       <input
         style={styles.email({ focused: emailFocused})}
@@ -98,7 +98,7 @@ const styles = {
     lineHeight: '2em',
     fontSize: '0.85em',
     padding: '0 0.5em',
-    width: '100%',
+    width: '60%',
     margin: '0.15em',
     border: '1px solid black',
     color: 'inherit',
