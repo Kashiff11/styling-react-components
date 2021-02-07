@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const color = {
   spectrum1: '#ff598a',
@@ -9,12 +9,27 @@ const color = {
   spectrum5: '#5e9fff',
 }
 
+const jitter = keyframes`
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0.9)
+  }
+`
+
 const Container = styled.section`
   position: relative;
-  max-width: 100%;
+  max-width: 60%;
+  margin: 0 auto;
   font-size: 1.25em;
   padding: 1em 1em 2em 1em;
   background: #2b283d;
+
+  @media (min-width: 800px) {
+    font-size: 1.5em;
+    max-width: 700px;
+  }
 `
 
 const Header = styled.header`
@@ -35,12 +50,17 @@ const Email = styled.input`
   line-height: 2em;
   font-size: 0.85em;
   padding: 0 0.5em;
-  width: 100%;
+  width: 60%;
   margin: 0.15em;
   border: 1px solid black;
   color: inherit;
   background: inherit;
   text-align: inherit;
+
+  &:focus {
+    outline: 2px solid #fff;
+    outline-offset: 0.15em
+  }
 `
 
 const Submit = styled.button`
@@ -78,7 +98,8 @@ const Spectrum = styled.div`
 `
 
 const Bar = styled.div`
-  height: 0.5em;
+  animation: ${jitter} 350ms east-out infinite alternate;
+  height: ${props => (props.active ? '100%' : '0.5em')};
   width: 20%;
   transform-origin: bottom;
   transition: all 1s;
@@ -106,12 +127,12 @@ const Bar = styled.div`
 
 function Newsletter(props) {
   const [email, setEmail] = React.useState('')
-  // const emailPartsCount = countEmailParts(email)
+  const emailPartsCount = countEmailParts(email)
   return (
     <Container>
       <Spectrum aria-hidden>
         {Array.from(Array(5)).map((_, i) => (
-          <Bar key={i}></Bar>
+          <Bar active={i + 1 <= emailPartsCount} key={i}></Bar>
         ))}
       </Spectrum>
       <Header>
@@ -130,18 +151,18 @@ function Newsletter(props) {
 
 export default Newsletter
 
-// function countEmailParts(email) {
-//   if (/@.+\..{2,}$/.test(email)) {
-//     return 5
-//   } else if (/@.+\..?$/.test(email)) {
-//     return 4
-//   } else if (/@.+$/.test(email)) {
-//     return 3
-//   } else if (/@/.test(email)) {
-//     return 2
-//   } else if (/.+/.test(email)) {
-//     return 1
-//   } else {
-//     return 0
-//   }
-// }
+function countEmailParts(email) {
+  if (/@.+\..{2,}$/.test(email)) {
+    return 5
+  } else if (/@.+\..?$/.test(email)) {
+    return 4
+  } else if (/@.+$/.test(email)) {
+    return 3
+  } else if (/@/.test(email)) {
+    return 2
+  } else if (/.+/.test(email)) {
+    return 1
+  } else {
+    return 0
+  }
+}
